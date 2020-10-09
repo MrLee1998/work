@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2116785_fhagr5tl09.css
+    ">
+    <style>
+        input {
+            appearance: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .rate-content {
+
+            display: flex;
+            flex-flow: row-reverse;
+            left: 0;
+
+        }
+
+        input[name="rate"] {
+            font-family: "iconfont";
+            font-size: 30px;
+            padding-right: 10px;
+            transition: all 0.4s ease;
+        }
+
+        input[name="rate"]::after {
+            content: "\e602";
+            color: #999;
+
+        }
+
+        input[name="rate"]:checked::after {
+            content: "\e60e";
+            color: yellow;
+        }
+
+        input[name="rate"]:hover {
+            transform: scale(1.3);
+        }
+
+        input[name="rate"]:hover::after {
+            content: "\e60e";
+            color: yellow;
+
+        }
+
+        input[name="rate"]:checked~input[name="rate"]::after {
+            /* 选择被选中的兄弟元素 */
+            content: "\e60e";
+            color: yellow;
+        }
+
+        input[name="rate"]:hover~input[name="rate"]::after {
+            /* 选择被选中的兄弟元素 */
+            content: "\e60e";
+            color: yellow;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="rate-content">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+    </div>
+</body>
+
+</html>

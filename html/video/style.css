@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    background: url('../images/4.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+    width: 850px;
+    display: flex;
+
+}
+.speed {
+    background-color: blanchedalmond;
+    flex: 1;
+    margin: 10px;
+    border-radius: 50px ;
+}
