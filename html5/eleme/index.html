@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/weui/2.3.0/style/weui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styl/commom.css">
+</head>
+
+<body>
+    <!-- <div class="weui-tabbar">
+        <div class="weui-tabbar__item weui-bar__item_on">
+            <div style="display: inline-block; position: relative;">
+                <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                <span class="weui-badge" style="position: absolute; top: -2px; right: -13px;">8</span>
+            </div>
+            <p class="weui-tabbar__label">商家信息</p>
+        </div>
+        <div class="weui-tabbar__item">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">菜品</p>
+        </div>
+        <div class="weui-tabbar__item">
+            <div style="display: inline-block; position: relative;">
+                <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                <span class="weui-badge weui-badge_dot" style="position: absolute; top: 0; right: -6px;"></span>
+            </div>
+            <p class="weui-tabbar__label">评论</p>
+        </div>
+        <div class="weui-tabbar__item">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">我</p>
+        </div>
+    </div>
+    <script>
+        //  JS  事件捕获
+        // JS 事件冒泡
+        var select = document.querySelector('.weui-tabbar')
+        select.addEventListener('click', function() {
+            // 第三个参数的作用
+            console.log('里面');
+        }, true)
+        select = document.querySelector('.weui-tabbar__item')
+        select.addEventListener('click', function() {
+            // 第三个参数的作用
+            console.log('中间');
+        }, true)
+        select = document.querySelector('.weui-tabbar__item  .weui-tabbar__label')
+        select.addEventListener('click', function() {
+            // 第三个参数的作用
+            console.log('外面');
+        }, true)
+    </script> -->
+    <div>
+        <!-- 饿了吗头部 -->
+        <div class="ele-header">
+            <div class="content-wraper">
+                <div class="ele-header__avatat">
+                    <img src="" alt="" height="64px" width="64px">
+                </div>
+                <div class="content-wraper__content">
+                    <div class="ele-wraper__title">
+                        <span class="ele-wraper__brand"></span>
+                        <span class="ele-wraper__name"></span>
+                    </div>
+                </div>
+                <div class="ele-wraper__description"></div>
+                <div class="ele-wraper__support"></div>
+            </div>
+        </div>
+        <div class="ele-tab border-1px">
+            <div class="tab-item">
+                <a href="javascript:;">商品</a>
+            </div>
+            <div class="tab-item">
+                <a href="javascript:;">评论</a>
+            </div>
+            <div class="tab-item">
+                <a href="javascript:;">商家</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

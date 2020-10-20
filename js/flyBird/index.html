@@ -14,53 +14,100 @@
         <div id="headTitle">
             <img src="./img/bird0.png" alt="" id="headBird">
         </div>
-        <button id="startBtn"></button>
         <!-- 开始按钮 -->
+        <button id="startBtn"></button>
+        <!-- 草地 移动 -->
         <div id="grassLand1"></div>
         <div id="grassLand2"></div>
-        <!-- 草地 移动 -->
+
     </div>
+    <script src="./JS/bird.js"></script>
+    <script src="./JS/baseObj.js"></script>
+    <script src="./JS/block.js"></script>
+
+
+
     <script>
         //拿到标题的DOM结构
         //设置该DOM的top值
         var jsHeadTitle = document.getElementById('headTitle');
         var jsWrapBg = document.getElementById('wrapBg');
         var jsHeadBird = document.getElementById('headBird');
+        // 设置一个数组存储管道
+        var blockArr = []
+        // 生成两个管道之间的间距
+        var blockDistance = baseObj.randomNum(120, 350)
+
         var index = 0;
         var imgArr = ['img/bird0.png', 'img/bird1.png'];
         var Y = 3;// 作为标题摆动幅度
         var headWaveTimer = setInterval(headWave, 200);
         function headWave() {
 
-            Y *= -1;
-            jsHeadTitle.style.top = jsHeadTitle.offsetTop + Y + "px";//offsetTop 获取当前位置的高度
+            Y *= -1
+            jsHeadTitle.style.top = jsHeadTitle.offsetTop + Y + 'px'//offsetTop 获取当前位置的高度
             jsHeadBird.src = imgArr[index++];
             if (index > 1) {
-                index = 0;
+                index = 0
+                // jsWrapBg.onclick = null
+                // bird.fallSpeed = 0
             }
         }
         //草地动画设计
-        var X = 3;
+
         var jsGrassLand1 = document.getElementById('grassLand1');
         var jsGrassLand2 = document.getElementById('grassLand2');
-        setInterval(landRun, 30);
-        function landRun() {
-            if (jsGrassLand1.style.offsetLeft <= -343) {
-                jsGrassLand1.style.left = 343 + "px";
-            }
-            if (jsGrassLand2.style.offsetLeft <= -343) {
-                jsGrassLand2.style.left = 343 + "px";
-            }
-            jsGrassLand1.style.left = jsGrassLand1.offsetLeft - X + "px";
-            jsGrassLand2.style.left = jsGrassLand2.offsetLeft - X + "px";
 
+        var landTimer = setInterval(landRun, 30);
+        function landRun() {
+            if (jsGrassLand1.offsetLeft <= -343) {
+                jsGrassLand1.style.left = "343px";
+            }
+            if (jsGrassLand2.offsetLeft <= -343) {
+                jsGrassLand2.style.left = "343px";
+            }
+            jsGrassLand1.style.left = jsGrassLand1.offsetLeft - 3 + "px";
+            jsGrassLand2.style.left = jsGrassLand2.offsetLeft - 3 + "px";
+
+            //管道的移动
+            if (blockArr.length) {
+                for (var i = 0; i < blockArr.length; i++) {
+
+                    blockArr[i].moveBlock()  //b.moveBlock()
+                    var x = baseObj.rectangleCrashExamine(blockArr[i].downDivWrap, bird.div)
+                    var y = baseObj.rectangleCrashExamine(blockArr[i].upDivWrap, bird.div)
+                    var z = bird.div.offsetTop >= 390
+                    if (x || y || z) {
+                        clearInterval(landTimer)
+                        jsWrapBg.onclick = null
+                        bird.fallSpeed = 0
+                    }
+                }
+                if (blockArr[blockArr.length - 1].downDivWrap.offsetLeft < (450 - blockDistance)) {
+                    var newBlock = new Block()
+                    newBlock.createBlock()
+                    blockArr.push(newBlock)
+                }
+
+            }
         }
         //开始按钮
         var jsStartBtn = document.getElementById('startBtn');
         jsStartBtn.onclick = function () {
-            jsHeadTitle.style.display = 'none';
-            jsStartBtn.style.display = 'none';
-            clearInterval('headWaveTimer');
+            jsHeadTitle.style.display = 'none'
+            jsStartBtn.style.display = 'none'
+            clearInterval(headWaveTimer)
+            // 插入小鸟到页面当中
+            bird.showBird(jsWrapBg)
+            bird.flyBird()
+            bird.wingWave()
+            jsWrapBg.onclick = function () {
+                bird.fallSpeed = -8
+            }
+            //出现管道的函数调用
+            var b = new Block()
+            b.createBlock()
+            blockArr.push(b)
         }
     </script>
 </body>
