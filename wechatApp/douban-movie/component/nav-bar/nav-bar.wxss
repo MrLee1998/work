@@ -1,0 +1,18 @@
+/* component/nav-bar/nav-bar.wxss */
+
+.container {
+    position: fixed;
+    /*使结构脱离文档流*/
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.nav-bar {
+    display: flex;
+    /* color: pink; */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 34rpx;
+}
