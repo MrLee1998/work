@@ -1,5 +1,5 @@
 var smallerNumbersThanCurrent = function(nums) {
-    var nums = [8, 1, 2, 2, 3];
+    var nums;
     var m;
     var arr = new Array;
 
@@ -14,4 +14,5 @@ var smallerNumbersThanCurrent = function(nums) {
     }
     console.log(arr);
 };
-smallerNumbersThanCurrent()
+var nums = [8, 1, 2, 2, 3, 9]
+smallerNumbersThanCurrent(nums)
