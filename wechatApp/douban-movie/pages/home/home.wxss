@@ -3,3 +3,44 @@
 .weui-search-bar {
     background-color: #42BD55;
 }
+
+.row {
+    margin-bottom: 30rpx;
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.title {
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.title-right {
+    display: flex;
+    align-items: center;
+    margin-right: 30rpx;
+}
+
+.title-right .more {
+    font-weight: bold;
+    color: #42BD55;
+}
+
+.title-right .arrow {
+    width: 12rpx;
+    height: 12rpx;
+    border: 1px solid green;
+    transform: rotateZ(45deg);
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.scroll-view__movie {
+    margin-left: 30rpx;
+}
