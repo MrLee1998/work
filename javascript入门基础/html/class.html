@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        /*         
+        li+li::before {
+            content: '|';
+        } */
+        /*         
+        li:nth-child(1)~li {
+            color: red;
+        } */
+        /*       !important:  1-0-0-0-0
+                 优先级       
+                 行内：        1-0-0-0
+                 id：
+                 attr: type="text"   class  0-1-0
+                 tag:  div li               0-0-1
+        */
+        
+        #id {
+            color: red;
+        }
+        
+        .cls {
+            color: pink !important;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="id" class="cls" style="color: green;">
+        <li>M</li>
+        <li>N</li>
+        <span>o</span>
+        <li>B</li>
+    </ul>
+</body>
+
+</html>
