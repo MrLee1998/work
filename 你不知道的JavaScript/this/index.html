@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        'use strict';
+        function foo(){
+            console.log(this);
+        }
+        foo()
+    </script> -->
+    <!-- <script>
+        function identify(){
+            return this.name.toUpperCase()  // toUpperCase把小写字母转化为大写
+        }
+        function speak(){
+            var greeting='hello i`m  ' + identify.call(this)
+            console.log(greeting);
+        }
+        var me={
+            name: 'wn'
+        }
+        var you= {
+            name: 'peipei'
+        }
+        speak.call(me)
+        speak.call(you)
+        function foo(){
+            let person = {
+                name: 'wn',
+                age: 18
+            }
+            console.log(this);
+        }
+        function bar(){
+            let person = {
+                name: 'pp',
+                age: 18
+            }
+            foo()
+        } 
+        bar()
+    </script> -->
+    <!-- <script>
+        function foo() {
+            console.log(this);
+            console.log(this.a);
+        }
+        var a=2;
+        foo();
+        (function(){
+            'user strict'
+            foo()   //严格模式下 foo的调用与位置无关
+        })()
+    </script> -->
+    <!-- <script>
+        function foo(){
+            console.log(this.a);
+        }
+        var obj2 = {
+            a: 3,
+            foo: foo
+        }
+        var obj1 = {
+            a: 2,
+            obj2: obj2
+        }
+        obj1.obj2.foo()
+        // obj1.foo()
+        obj1[obj2.foo()]
+    </script> -->
+    <script>
+        function foo(){
+            console.log(this.a);
+        }
+        var obj = {
+            a: 3,
+            foo: foo
+        }
+        var bar = obj.foo
+        var a='hello word'
+        bar()
+    </script>
+</body>
+</html>
