@@ -1,12 +1,12 @@
 <!-- component/movieitem/movieitem.wxml -->
 <view class="item">
     <view class="info">
-        <image class="img" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3746149156,3846202622&fm=26&gp=0.jpg" />
-        <view class="name">girl ypppppppppppppppppppppppp</view>
+        <image class="img" src="{{movie.images.large}}" />
+        <view class="name">{{movie.title}}</view>
         <view class="score-wrapper">
             <!-- 评分⭐ -->
-            <ratingstar score="45"></ratingstar>
-            <view class="score">8.5</view>
+            <ratingstar score="{{movie.numberStars}}"></ratingstar>
+            <view class="score">{{movie.rating.average}}</view>
         </view>
     </view>
 </view>

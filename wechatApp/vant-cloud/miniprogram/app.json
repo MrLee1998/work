@@ -1,14 +1,14 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/group/group",
+    "pages/index/index",
     "pages/personal/personal"
   ],
   "window": {
-    "backgroundColor": "#f2f2f2",
+    "backgroundColor": "#F2F2F2",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "一起拼单",
+    "navigationBarTitleText": "一起买单",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -17,20 +17,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "./images/images/plus-dark.png",
-        "selectedIconPath": "./images/images/plus-light.png"
+        "iconPath": "./images/plus-dark.png",
+        "selectedIconPath": "./images/plus-light.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/group/group",
         "text": "群组",
-        "iconPath": "./images/images/group-dark.png",
-        "selectedIconPath": "./images/images/group-light.png"
+        "iconPath": "./images/group-dark.png",
+        "selectedIconPath": "./images/group-light.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/personal/personal",
         "text": "我的",
-        "iconPath": "./images/images/user-dark.png",
-        "selectedIconPath": "./images/images/user-light.png"
+        "iconPath": "./images/user-dark.png",
+        "selectedIconPath": "./images/user-light.png"
       }
     ]
   },

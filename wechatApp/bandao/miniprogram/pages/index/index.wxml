@@ -1,0 +1,13 @@
+<block wx:for="{{products}}" wx:key="index">
+  <van-button type="default" bindtap="upload">点击上传</van-button>
+  <view class="color">品牌:{{item.title}}</view>
+  <view>{{item.view}}</view>
+  <view>{{item.color}}</view>
+  <image src="{{item.image}}" />
+</block>
+<block wx:for="{{photos}}" wx:key="index">
+    <image src="{{item.image}}"/>
+</block>
+<block wx:for="{{products}}" wx:key="index">
+    <image src="{{item.image}}"/>
+</block>

@@ -1,0 +1,18 @@
+/* pages/index/index.wxss */
+.wrapper {
+  
+}
+.group {
+  text-align: center;
+}
+.group .group-content-item{
+  display: flex;
+  flex-direction: row;
+}
+.group .group-content-item .group-content-item-desc{
+  float: right;
+}
+.group .group-content-item-img {
+  width: 300rpx;
+  height: 150rpx;
+}

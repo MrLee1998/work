@@ -1,5 +1,5 @@
 /* miniprogram/pages/index/index.wxss */
-.new-item {
+.new-item{
   width: 80%;
   background-color: #fff;
   border-radius: 38rpx;
@@ -12,7 +12,7 @@
   padding: 20rpx;
   transition: all .5s;
 }
-.new-item  image {
+.new-item image{
   width: 124rpx;
   height: 124rpx;
 }
@@ -21,13 +21,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.right-conner .item-name {
-  margin-right: 24rpx;
+.right-conner .item-name{
+  margin-right: 14rpx;
 }
-.icon-arrow {
+.icon-arrow{
   text-align: right;
-  padding-right: 23rpx;
+  padding-right: 13rpx;
 }
-.new-item:hover {
+.new-item:hover{
   box-shadow: none;
 }

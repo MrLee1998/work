@@ -1,26 +1,75 @@
 // miniprogram/pages/index/index.js
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    newGoupModal: false,
-    goupName: ''
+    newGroupModal: false,
+    groupName: ''
   },
-  showNewGroupModal(){
-    this.setData({newGoupModal: true})
-    
-  },
-  onClose (){
-    this.setData({newGoupModal: false})
-  },
-  createGoup(){
-    
-  },
-  onGroupNameChange(){
 
+  showNewGroupModal() {
+    // console.log(123);
+    this.setData({
+      newGroupModal: true
+    })
   },
+  onClose() {
+    this.setData({
+      newGroupModal: false
+    })
+  },
+  createGroup() {
+    const self = this
+    if (self.data.groupName === '') {
+      Notify({
+        message: '起个名字吧',
+        duration: 3000,
+        selector: '#notify-selector',
+        background: '#dc3545'
+      });
+      self.setData({
+        newGroupModal: true
+      })
+      return
+    } 
+    // 把groupName传给后端
+    wx.cloud.callFunction({
+      name: 'createGroup',
+      data: {
+        groupName: self.data.groupName
+      },
+      success(res) {
+        // console.log(res);
+        self.setData({
+          groupName: ''
+        })
+        Notify({
+          message: '新建成功',
+          duration: 3000,
+          selector: '#notify-selector',
+          background: '#28a745'
+        });
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/group/group'
+          })
+        }, 1500)
+      },
+      fail(err) {
+        console.log('错误', err);
+      }
+    })
+  },
+  onGroupNameChange(event) {
+    // console.log(event);
+    this.setData({
+      groupName: event.detail
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

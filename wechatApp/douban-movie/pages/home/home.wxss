@@ -42,5 +42,10 @@
 }
 
 .scroll-view__movie {
-    margin-left: 30rpx;
+    height: 402rpx;
+    white-space: nowrap;
+}
+
+.scroll-view__movie .item {
+    padding-left: 34rpx;
 }
