@@ -44,7 +44,9 @@ some 方法: 便利数组 ，查找一个满足田间的元素 （有 ，就停�
 tsc --watch .ts  监听ts文件  自动更新js文件
 forEach 方法 可以拿到数组中每个值的索引
 
-122
+dom.target
+dom.type
+
 
     
 
