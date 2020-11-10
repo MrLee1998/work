@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #lay {
+            background-color: #000;
+            opacity: 0.8;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>暗黑术士的亲笔</h2>
+    <div id="skill">
+        Asura: 波动爆发， 雷兽
+    </div>
+    <div id="lay"></div>  
+    <div id="tip">
+        <button>下一步</button>
+    </div>
+    <script>
+        
+       window.onload = function() {
+        
+       }
+        let tip = document.getElementById('tip')
+        let skill = document.getElementById('skill')  
+        function light(obj) {  
+            obj.style.zIndex = 4;
+            obj.style.position = 'relative';
+            obj.style.backgroundColor = '#fff';
+            // getBoundingClientRect();
+            // {left, bottom}
+            let {left, bottom} = obj.getBoundingClientRect();
+            tip.style.position = 'fixed'
+            tip.style.zIndex = 4;
+            tip.style.left = left + 10 + 'px'
+            tip.style.top = bottom + 10 + 'px'
+        }
+        light(skill);
+    </script>
+    <!-- <script src="./index.js"></script> -->
+</body>
+</html>
