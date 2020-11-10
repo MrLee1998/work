@@ -47,6 +47,8 @@ forEach 方法 可以拿到数组中每个值的索引
 dom.target
 dom.type
 
+{once: true} 属性  事件用完一次失效
 
+133
     
 
