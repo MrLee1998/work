@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        body {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .loading {
+            margin: 12px;
+            text-align: center;
+        }
+
+        .action {
+            margin: 12px;
+            text-align: center;
+        }
+
+        .action button {
+            margin-right: 8px;
+        }
+
+        .link {
+            display: block;
+            padding: 8px;
+            text-align: center;
+            color: red;
+        }
+
+        .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            column-count: 4;
+        }
+
+        .img-wrap {
+            width: 25%;
+            padding: 8px;
+        }
+
+        .img {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .move {
+            transition: transform 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="add">add</button>
+    <button id="random" onclick="randomNode();">random</button>
+    <div class="wrap">
+        <img src="./images/1.jpeg" class="img-wrap"><img
+            src="./images/2.jpeg" class="img-wrap"><img
+            src="./images/3.jpg" class="img-wrap"><img
+            src="./images/6.jpeg" alt="" class="img-wrap"><img
+            src="./images/7.jpg" class="img-wrap"><img
+            src="./images/8.jpg" class="img-wrap"><img
+            src="./images/9.jpg" class="img-wrap"><img
+            src="./images/10.jpg" class="img-wrap"><img
+            src="./images/11.jpg" class="img-wrap">
+    </div>
+    <script>
+        const images = document.querySelectorAll('img')
+        let map = new Map();
+        images.forEach((item) => {
+            map.set(item,item.getBoundingClientRect());
+        })
+        console.log(images);
+        // console.log(item);
+        function randomNode() {
+            // 乱序
+            let newImages = Array.from(images).sort(() => {
+                return Math.random() - 0.5; //伪随机
+            })
+            // console.log(Math.random() - 0.5);
+            // 同一个 DOM 节点 只会属于一个父容器
+            newImages.forEach((item) => {
+                document.querySelector('.wrap').appendChild(item)
+            })
+            // console.log(newImages); // 不存在  被删除了  
+            let last = new Map()
+            newImages.forEach((item) => {
+                last.set(item,item.getBoundingClientRect())
+            })
+            newImages.forEach((item) => {
+                let x = map.get(item).left - last.get(item).left;
+                let y = map.get(item).top - last.get(item).top;
+                let keyFrame = [
+                    {
+                        transform:  `translate(${x}px,${y}px)`
+                    },
+                    {
+                        transform:  `translate(0px, 0px)`
+                    } 
+                ]
+                item.animate(keyFrame,{
+                    duration: 300,
+                    easing: 'ease-in-out'
+                })
+            })
+        }
+        
+    </script>
+</body>
+
+</html>
