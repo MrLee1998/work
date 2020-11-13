@@ -1,0 +1,22 @@
+<!--pages/demo/demo5.wxml-->
+<button>默认按钮</button>
+<button size="mini">默认按钮</button>
+<button type="default">默认按钮</button>
+<button type="primary">默认按钮</button>
+<button type="warn">默认按钮</button>
+<button type="warn" plain>默认按钮</button>
+<button type="warn" plain loading>默认按钮</button>
+<button open-type="contact">contact</button>
+<button open-type="share">share</button>
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">getPhoneNumber</button>
+<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">getUserInfo</button>
+<button open-type="launchApp">launchApp</button>
+<button open-type="openSetting">openSetting</button>
+<button open-type="feedback">feedback</button>  
+
+
+
+
+
+
+

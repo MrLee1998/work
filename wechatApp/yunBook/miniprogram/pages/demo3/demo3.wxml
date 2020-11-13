@@ -1,0 +1,4 @@
+<!--pages/demo3/demo3.wxml-->
+<navigator url="/pages/demo2/demo2">轮播图</navigator>
+<navigator open-type="switchTab" url="/pages/demo2/demo2">轮播图</navigator>
+<navigator open-type="reLaunch" url="/pages/demo2/demo2">轮播图</navigator>

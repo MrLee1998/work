@@ -40,3 +40,29 @@
 
     image
         lazy-load 懒加载  直接调用属性
+
+    navigator
+        导航组件
+        块级元素 默认会换行  可以直接加宽度和高度
+        open-type 有效值
+
+    rich-text 
+        nodes属性来实现
+        1.接收标签字符串
+
+    button
+        <button>默认按钮</button>
+        <button size="mini">默认按钮</button>
+        <button type="default">默认按钮</button>
+        <button type="primary">默认按钮</button>
+        <button type="warn">默认按钮</button>
+        <button type="warn" plain>默认按钮</button>
+        <button type="warn" plain loading>默认按钮</button>
+        <button open-type="contact">contact</button>
+        <button open-type="share">share</button>
+        <button open-type="getPhoneNumber">getPhoneNumber</button>
+        <button open-type="getUserInfo">getUserInfo</button>
+        绑定一个 bindgetUserInfo 事件
+        <button open-type="launchApp">launchApp</button>
+        <button open-type="openSetting">openSetting</button>
+        <button open-type="feedback">feedback</button>

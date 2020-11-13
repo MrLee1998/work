@@ -10,7 +10,7 @@
     执行栈可以认为是一个存储函数调用的栈结构
 
 # Event Loop
-    微任务： process.nextTick, promise, MutationOvserver
+    微任务： process.nextTick, promise, MutationObserver
     宏任务： script, setTimeout, setInterval, setImmediate, I/O, UI-rendering
 
 执行顺序：
