@@ -1,0 +1,15 @@
+<!--pages/icon/icon.wxml-->
+<icon type="success" size="60" color="yellow"></icon>
+<radio-group bindchange="handlechange">
+  <radio checked="" value="man" color="pink">man</radio>
+  <radio checked="" value="women" color="pink">women</radio>
+</radio-group>
+<view> 选中的是:{{gender}}</view>
+<view>
+  <checkbox-group bindchange="handleFruit">
+  <checkbox value="{{item.value}}" wx:for="{{list}}" wx:key="id">{{item.name}}</checkbox>
+</checkbox-group>
+<view>选中的水果: {{checkedList}}
+</view>
+</view>
+
