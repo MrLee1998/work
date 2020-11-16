@@ -2,25 +2,31 @@
   <search></search>
   <view class="index_swiper">
     <swiper autoplay="true" indicator-dots circular>
-      <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+      <!-- <swiper-item wx:for="{{swiperList}}" wx:key="goods_id"> -->
+      <swiper-item wx:for="{{swiperList}}" wx:key="index">
         <navigator>
-          <image mode="widthFix" src="https://api-hmugo-web.itheima.net/pyg/banner1.png"></image>
-        </navigator>
-      </swiper-item>
-      <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
-        <navigator>
-          <image mode="widthFix" src="https://api-hmugo-web.itheima.net/pyg/banner2.png"></image>
-        </navigator>
-      </swiper-item><swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
-        <navigator>
-          <image mode="widthFix" src="https://api-hmugo-web.itheima.net/pyg/banner3.png"></image>
+          <image mode="widthFix" src="{{item.image_src}}"></image>
         </navigator>
       </swiper-item>
     </swiper>
   </view>
   <view class="cates_index">
     <navigator wx:for="{{catesList}}" wx:key="name">
-      <image mode="widthFix" src="item.image_src"></image>
+      <image mode="widthFix" src="{{item.image_src}}"></image>
     </navigator>
+  </view>
+  <view class="index_floor">
+    <view class="floor_group" 
+    wx:for="{{floorList}}"
+    wx:key="index">
+      <view class="floor_title">
+        <image mode="widthFix" src="{{item.floor_title.image_src}}"></image>
+      </view>
+      <view class="floor_list">
+        <navigator wx:for="{{item.product_list}}" wx:key="index">
+          <image mode="widthFix" src="{{item.image_src}}"></image>
+        </navigator>
+      </view>
+    </view>
   </view>
 </view>
