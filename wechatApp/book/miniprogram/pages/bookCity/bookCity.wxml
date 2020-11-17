@@ -1,0 +1,24 @@
+<view class="header">
+  <view class="hot">热榜推荐</view>
+  <view class="more">点击搜索等多小说</view>
+</view>
+<view class="hotlist" wx:for="{{hotData}}" wx:key="index" bindtap="toReading" data-url="{{item.url}}"> 
+  <view class="itemleft">
+    <image src="{{item.imagurl}}"/>
+  </view>
+  <view class="itemright">
+    <view class="authotop">
+      <text class="bookname">{{item.name}}</text>
+      <text class="autho">{{item.author}}</text>
+    </view>
+    <view class="detail">{{item.detail}}</view>
+  </view>
+</view>
+<!-- 推荐分类 -->
+<view class="classify" wx:for="{{classifyData}}" wx:key="index">
+  <view class="classifyname">{{item.classifyList}}</view>
+  <view class="classifyitem" wx:for="{{item.data}}"  wx:for-item="list" wx:key="item.url" bindtap="toReading" data-url="{{list.url}}">
+    <text class="sname">{{list.name}}</text>
+    <text class="sautho">{{list.author}}</text>
+  </view>
+</view>

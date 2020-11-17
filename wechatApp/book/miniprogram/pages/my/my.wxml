@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="userinfo" bindtap="all-userInfo">
+        <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">
+            点击获取头像
+        </button> 
+        <block wx:else>
+            <image class="userinfo-avatar" src="{{avatarUrl}}" mode="widthFix"/>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            <text class="userinfo-province">{{userInfo.province}}</text>           
+        </block>      
+    </view>     
+</view>
