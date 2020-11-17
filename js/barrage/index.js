@@ -39,7 +39,7 @@ class CanvasBarrage {
         // 添加属性 ，用来判断播放暂停
         this.isPaused = true
         // 得到所有的弹幕消息
-        this.barrages = this.data.map((item) =>new Barrage(item, this))   //Barrage初始化
+        this.barrages = this.data.map((item) =>new Barrage(item, this))   //Barrage初始
         // 渲染弹幕
         this.render()
     }

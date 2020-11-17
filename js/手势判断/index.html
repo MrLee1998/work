@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 长按 click 滑动
+        计时器  mouseUp  mouseLeave
+        移动端 click有延迟  要延迟一会判断是否有双击事件
+    -->
+    <a href="www.baidu.com">baidu</a>
+    <div class="wrap">
+
+    </div>
+    <script>
+        // 标准: click touchstart touchmove touchend
+        // 事件流(事件模型): 捕获阶段 目标阶段 冒泡阶段
+        const wrap = document.querySelector('.wrap');
+        // 自定义事件
+        wrap.addEventListener('press', () => {
+            console.log('收到press事件');
+        })
+        let timeout = null;
+        function start() {
+            setTimeout(() => {
+                console.log('press happened');
+                let e = new CustomEvent('press')
+                wrap.dispatchEvent(e)
+            },1000)
+        }
+        // touchstart -> move -> end -> click
+        let startX = 0,
+            startY = 0;
+        wrap.addEventListener('touchstart', (event) => {
+            // console.log('tap发生了');
+            startX = event.touches[0].clientX;
+            startY = event.touches[0].clientY;
+            start()
+            event.preventDefault();
+        })
+        wrap.addEventListener('click', () => {
+            console.log('click 发生了');
+        })
+        function end() {
+            clearTimeout(timeout)
+        }
+        wrap.addEventListener('touchmove', () => {
+            let diffX = event.touches[0].clientX - startX
+            let diffY = event.touches[0].clientY - startY
+            if( Math.abs(diffX) > Math.abs(diffY)) {
+                if(diffX ** 2 + diffY ** 2 > 2500) {
+                    return;
+                }
+                if(diffX>0){
+                    console.log('右滑');
+                }else{
+                    console.log('左滑');
+                }
+            }
+        })
+        wrap.addEventListener('touchend', () => {
+            end()
+        })
+        document.querySelector('a').addEventListener('click', (event)=> {
+            event.preventDefault();
+            event.stopImmediatePropagation()
+        })
+        document.querySelector('a').addEventListener('click', ()=> {
+
+        })
+    </script>
+</body>
+</html>
