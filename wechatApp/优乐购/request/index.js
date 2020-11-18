@@ -1,7 +1,7 @@
 export const request=(params) => {
   return new Promise ((resolve,reject) => {
     wx.request({
-      ...params,
+      ...params, // 结构所有数据
       success: (result) => {
         resolve(result);
       },
