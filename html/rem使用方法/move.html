@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div0 {
+            display: flex;
+        }
+
+        #div0 div {
+            height: 20px;
+
+        }
+
+        #div0 div:nth-child(1) {
+            background-color: green;
+            flex: 0 0 50px;
+
+        }
+
+        #div0 div:nth-child(2) {
+            background-color: pink;
+            flex: 1 1 auto
+        }
+
+        #div0 div:nth-child(3) {
+            background-color: yellow;
+            flex: 0 0 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>
