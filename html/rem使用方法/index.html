@@ -6,7 +6,7 @@
     <title>Document</title>
     <script>
         var c = () => {
-            let w = document.documentElement.clientWidth;
+            let w = document.documentElement.clientWidth;   // 获取当前屏幕的宽度
             let n = (20*(w/320)>40?40+"px":(20*(w/320)+"px"));
             document.documentElement.style.fontSize = n
         }
