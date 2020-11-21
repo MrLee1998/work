@@ -62,6 +62,13 @@
         {
           "name": "pages/category/category",
           "pathName": "pages/category/category",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goods_details/goods_details",
+          "pathName": "pages/goods_details/goods_details",
+          "query": "",
           "scene": null
         }
       ]
