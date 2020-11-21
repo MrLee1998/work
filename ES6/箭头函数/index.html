@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">click1</button>
+    <button id="btn2">click2</button>
+    <script>
+        const button1 = document.getElementById('btn1')
+        button1.addEventListener('click', function() {
+            this.innerHTML = 'hello'
+        })
+        const button2 = document.getElementById('btn2')
+        button2.addEventListener('click', () => {
+            console.log(this);
+            this.innerHTML = 'hello'
+        })
+    </script>
+</body>
+</html>
