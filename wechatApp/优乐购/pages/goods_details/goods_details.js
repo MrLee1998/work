@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    goods: {},
     "message": {
       "goods_id": 8888,
       "cat_id": 1085,
@@ -64,6 +65,48 @@ Page({
   async getGoodsDetail (goods_id) {
     const res = await request({url: 'https://api-hmugo-web.itheima.net/api/public/v1/goods/detail',data: {goods_id}})
     console.log(res)
+    this.setData ({
+      goods: {
+        goods_name: res.data.message.goods_name,
+        pics: res.data.message.pics,
+        goods_id: res.data.message.goods_id,
+        //ipone 部分手机 不识别webp图片格式
+        // 1.webp => 1.jpg
+        goods_introduce: res.data.message.goods_introduce.replace(/\.webp/g,'.jpg'),
+        goods_price: res.data.message.goods_price + '元'
+      }
+     
+    })
+    // console.log(goods);
+    
+  },
+  handlePreviewImage(e) {
+    const urls = this.data.goods.pics.map(v=>v.pics_mid)
+    const current = e.currentTarget.dataset.url
+    console.log(urls);
+    
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接
+      urls: urls // 需要预览的图片http链接列表
+    })
+  },
+  handleCartAdd() {
+    // console.log('shopping');
+    let cart = wx.getStorageSync('cart')||[];
+    let index = cart.findIndex(v=>v.goods_id===this.data.goods.goods_id)
+    if(index===-1){
+      this.data.goods.num=1
+      cart.push(this.data.goods)
+    }
+    else{
+      cart[index].num++
+    }
+    wx.setStorageSync('cart', cart)
+    wx.showToast({
+      title: '加入成功',
+      icon: 'success',
+      mask: true
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
