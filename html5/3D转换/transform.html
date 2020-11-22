@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            transition: all 1s;
+            transform-style: preserve-3d;
+        }
+        .box:hover {
+            transform: rotateY(850deg);
+        }
+        .box div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           
+        }
+        .box div:nth-child(1) {
+            transform: rotate3d(0,1,1,-160deg);
+            background-color: green;
+        }
+        .box div:nth-child(2) {
+            background-color: red;
+            /* transform: rotate3d(1,1,0,160deg);s */
+        }
+        body {
+            perspective: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
