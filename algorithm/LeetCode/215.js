@@ -16,7 +16,7 @@ function partition(arr, left, right){
 }
 var findKthLargest = function(nums, k) {
     let left = 0, right = nums.length-1;
-    let target = right - k;
+    let target = nums.length - k -1;
     let i = partition(nums, left, right);
     while(i !== target) {
         if(i < target){ 
@@ -26,7 +26,6 @@ var findKthLargest = function(nums, k) {
         }
         i = partition(nums, left, right)
     }
-    console.log(i);
     return nums[i];
 
 };
