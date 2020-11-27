@@ -34,6 +34,7 @@ export default {
         login() {
            if(this.username === 'admin' && this.password === '123456') {
                this.$router.push({path: '/home' ,query:{user: this.username}})
+               localStorage.setItem('user', this.username)
            }
         }
     }
