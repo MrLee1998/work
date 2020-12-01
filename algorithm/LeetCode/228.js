@@ -6,13 +6,13 @@ var summaryRanges = function (nums) {
   for(let i=0;i<len+1;i++){
 
     end = i
-    if(nums[i]+1!=nums[i+1]){
+    if(nums[i]+1!=nums[i+1]){  // i+ 1 len 的长度加1 
       if(start===end){
         ans.push(nums[end]+'')
       }else{
         ans.push(nums[start]+'->'+nums[end])
       }
-      start = end = i+1
+      start = end = i+1   // 断点 加1 继续循环
     }
   }
   return ans
