@@ -1,0 +1,50 @@
+html {
+    font-size: 10px;
+    background: url(https://img.36krcdn.com/20201012/v2_5431a27f30ea4cb5803afc5c1de131eb_img_jpg?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center);
+    background-size: cover;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.keys {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.key {
+    margin: 1rem;
+    padding: 1rem .5rem;
+    width: 10rem;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 .5rem black;
+    font-size: 1.5rem;
+    background: rgba(0,0,0,0.4);
+    border: .4rem solid black;
+    border-radius: .5rem;
+    transition: all .07s ease;
+}
+.playing {
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    transform: scale(1.1);
+}
+
+kbd {
+    display: block;
+    font-size: 4rem;
+}
+
+.sound {
+    font-size: 1.2rem;
+    color: #ffc600;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+}
