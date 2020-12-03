@@ -1,44 +1,69 @@
 <template>
-  <div class="header">
+  <div class="header" @click="showDetail">
     <div class="content-wrapper">
       <div class="avatar">
-        <img width="64" height="64" src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1819216937,2118754409&fm=26&gp=0.jpg" alt="">
+        <img width="64" height="64" :src="seller.avatar" alt="">
       </div>
       <div class="content">
         <div class="title">
           <span class="brand"></span>
-          <span class="name">1024 早餐</span>
+          <span class="name">{{seller.name}}</span>
         </div>
         <div class="description">
-          蜗牛速送（饿了吗专属）
+          {{seller.description}}/{{seller.deliveryTime}}分钟送达
         </div>
-        <div class="support">
-          <SupportIco :size=1 :type=0></SupportIco>
-          <span class="text">在线支付，满10减1</span>
+        <div class="support" v-if="seller.supports">
+          <SupportIco :size=1 :type="seller.supports[0].type"></SupportIco>
+          <span class="text">{{seller.supports[0].description}}</span>
         </div>
       </div>
-      <div class="support-count">
-        <span class="count">5个</span>
+      <div class="support-count" v-if="seller.infos">
+        <span class="count">{{seller.infos.length}}个</span>
         <i class="icon-keyboard_arrow_right"></i>
       </div>
     </div>
     <div class="bulletin-wrapper">
       <span class="bulletin-title"></span>
-      <span class="bulletin-text">去上等蜗牛，经九九八十一天发酵。。。。。。。。。。。。。。。。。。。。。。。。。。。。。</span>
+      <span class="bulletin-text">{{seller.bulletin}}</span>
       <i class="icon-keyboard_arrow_right"></i>
     </div>
     <!-- 背景 -->
     <div class="background">
-      <img src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1819216937,2118754409&fm=26&gp=0.jpg" alt="" width="100%" height="100%">
+      <img :src="seller.avatar" alt="" width="100%" height="100%">
     </div>
+    <HeaderDetail :seller="seller" v-show="detailVisable" @close="closeDetail"></HeaderDetail>
   </div>
 </template>
 
 <script>
 import SupportIco from '@/components/support-ico/support-ico.vue'
+import HeaderDetail from '@/components/header-detail/Header-detail.vue'
 export default {
+  props: {
+    seller:{
+      type: Object,
+      default() {
+        return {}
+      }
+    } // 数据绑定的的属性名
+  },
+  data () {
+    return {
+       detailVisable: false
+    }
+  },
+  methods: {
+    showDetail() {
+      return this.detailVisable = true
+    },
+    closeDetail(e) {
+      console.log(e);
+      return this.detailVisable = e
+    }
+  },
   components: {
-    SupportIco
+    SupportIco,
+    HeaderDetail
   }
 }
 </script>
