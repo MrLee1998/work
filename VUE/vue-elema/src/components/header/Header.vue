@@ -54,11 +54,11 @@ export default {
   },
   methods: {
     showDetail() {
-      return this.detailVisable = true
+      this.detailVisable = true
     },
     closeDetail(e) {
       console.log(e);
-      return this.detailVisable = e
+      this.detailVisable = e
     }
   },
   components: {
