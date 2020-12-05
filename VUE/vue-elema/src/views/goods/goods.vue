@@ -33,6 +33,10 @@
                     <span class="now">￥{{food.price}}</span>
                     <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
+                  <!-- + -->
+                  <div class="cartcontrol-wrapper">
+                    <Cartcontrol :food="food"></Cartcontrol>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -41,6 +45,7 @@
       </div>
     </div>
     <!-- 购物车 -->
+    <Shopcart :selecteFoods="selecteFoods" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></Shopcart>
   </div>
 </template>
 
@@ -48,9 +53,18 @@
 import { getGoods } from '@/api'
 import BScroll from 'better-scroll'
 import SupportIco from '@/components/support-ico/support-ico.vue'
+import Shopcart from '@/components/shop-cart/Shop-cart.vue'
+import Cartcontrol from '@/components/cart-control/Cart-control.vue'
 export default {
+  props: {
+    seller: {
+      type: Object
+    }
+  },
   components: {
-    SupportIco
+    SupportIco,
+    Shopcart,
+    Cartcontrol
   },
   data () {
     return {
@@ -80,6 +94,19 @@ export default {
         }
       }
       return 0
+    },
+    selecteFoods() {
+      let foods = [];
+      for(let good of this.goods){
+        if(good.foods) {
+          for(let food of good.foods){
+            if(food.count) {
+              foods.push(food)
+            }
+          }
+        } 
+      }
+      return foods
     }
   },
   methods: {
@@ -156,6 +183,7 @@ export default {
         background $color-background-ssss
       .food-item
         display flex 
+        position: relative;
         margin 18px
         padding-bottom: 18px;
         &:last-child
@@ -194,4 +222,8 @@ export default {
               text-decoration line-through
               font-size 10px
               color rgb(147, 153, 159)    
+          .cartcontrol-wrapper
+            position: absolute;    
+            right: 0;
+            bottom 0
 </style>
