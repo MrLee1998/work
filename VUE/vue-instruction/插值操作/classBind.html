@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .classBind {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div :class="{classBind: isclassBind}">classBind</div>
+    <div :class="getClass()">classBind</div>
+    <button @click="btn">点击</button>
+  </div>
+  <script src="../vue基础知识/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好',
+        url1: 'http://www.baidu.com',
+        url: '<a href="http://www.baidu.com">百度一下</a>',
+        imgUrl: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+        isclassBind: true
+      },
+      methods:  {
+        btn: function() {
+          this.isclassBind = !this.isclassBind
+        },
+        getClass: function() {
+          return { classBind: this.isclassBind }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

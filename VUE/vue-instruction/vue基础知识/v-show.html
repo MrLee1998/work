@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!--  v-if  条件为false dom不存在   v-show  dom 隐藏 display: none -->
+    <h1 v-show="isActive">111</h1>
+    <button @click="change">消失</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isActive: true
+      },
+      methods: {
+        change() {
+          this.isActive = !this.isActive
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

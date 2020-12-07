@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <span v-if="isActive">
+      <label for="username">用户登陆</label>
+      <!-- 绑定key值 解决复用问题 -->
+      <input type="text" id="username" placeholder="账号" key="username"> 
+    </span>
+    <span v-else>
+      <label for="email">用户邮箱</label>
+      <input type="text" id="email" placeholder="邮箱" key="email">
+    </span>
+    <button @click="change">点击切换</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isActive: true
+      },
+      methods: {
+        change() {
+          this.isActive = !this.isActive
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

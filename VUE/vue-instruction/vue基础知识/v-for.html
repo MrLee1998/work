@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item, index) in array" :key="index">{{item}}----{{index}}</li>
+    </ul>
+    <ul>
+      <!--  key的作用是为了更高效的更新虚拟dom -->
+      <li v-for="(item, key, index) in info" :key="index">{{item}}--{{key}}--{{index}}</li>
+    </ul>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        array: [1, 2, 3 ,5 ,6 ,7],
+        info:{
+          name: 'lz',
+          age: 18,
+          sex: 'boy'
+        },
+        isActive: true
+      },
+      methods: {
+        change() {
+          this.isActive = !this.isActive
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

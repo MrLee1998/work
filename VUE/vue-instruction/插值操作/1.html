@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <!-- <div v-pre>{{message}}</div> -->
+    <h2 v-text="message"></h2>
+    <h2 v-html="url"></h2>
+    <a v-bind:href="url1">百度一下</a>
+    <img v-bind:src="imgUrl" alt="">
+    <!-- 语法糖写法  可以去掉 v-bind  -->
+    <div class="classBind"></div>
+  </div>
+  <script src="../vue基础知识/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好',
+        url1: 'http://www.baidu.com',
+        url: '<a href="http://www.baidu.com">百度一下</a>',
+        imgUrl: 'https://www.baidu.com/img/flexible/logo/pc/result.png'
+      }
+    })
+  </script>
+</body>
+
+</html>

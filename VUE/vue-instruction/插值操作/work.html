@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .addColor {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul v-if="">
+      <li v-for="(item,index) in movies" :key="index" :class="{'addColor': currentIndex === index}" @click="add(index)">{{item.name}}</li>
+    </ul>
+  </div>
+  <script src="../vue基础知识/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        movies: [
+          {name: '海王', isActive: true},
+          {name: '激战', isActive: true},
+          {name: '秦时明月', isActive:  true},
+          {name: '星游记', isActive:  true}
+        ],
+        currentIndex: 0
+      },
+      methods: { 
+        add(idx) {
+          this.currentIndex = idx
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
