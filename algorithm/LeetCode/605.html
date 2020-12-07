@@ -1,0 +1,14 @@
+<script>
+  var canPlaceFlowers = function(flowerbed, n) {
+    let  nums = 0;
+    for(let i = 0, len = flowerbed.length; i < len; i++){
+      if(flowerbed[i] === 0 && flowerbed[i-1] !== 1 && flowerbed[i+1] !== 1){
+        nums++;
+        i++;
+      }
+    }
+    return nums >= n
+  };
+  let flowerbed = [1,0,0,0,0,0,1,0,0], n = 3;
+  console.log(canPlaceFlowers(flowerbed, n));
+</script>
