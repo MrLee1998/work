@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="message">
+    <input type="text" :value="message" @input="change">
+    <div>{{message}}</div>
+    <div>{{mess}}</div>
+    <label class="" for="male">
+      <input type="radio" id="male" name="sex" value="男" v-model="sex"> 男
+    </label>  
+    <label class="" for="female">
+      <input type="radio" id="female" name="sex" value="女" v-model="sex"> 女
+    </label>  
+    <div>choose{{sex}}</div>
+    <label for="agree">
+      <input type="checkbox" id="agree" v-model="isAgree"> 同意
+    </label>
+    <h2>{{isAgree}}</h2>
+    <button :disabled="!isAgree">下一步</button>
+    <div>
+      <label for="">
+        <input type="checkbox" value="篮球" v-model="hobby">篮球
+        <input type="checkbox" value="排球" v-model="hobby">排球
+        <input type="checkbox" value="羽毛球" v-model="hobby">羽毛球
+        <input type="checkbox" value="足球" v-model="hobby">足球
+      </label>
+    </div>
+    <div>你的选择:{{hobby}}</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <div>-</div>
+    <select name="a" id="" v-model="fruit">
+      <option value="平果1">平果11</option>
+      <option value="平果2">平果22</option>
+      <option value="平果3">平果33</option>
+      <option value="平果4">平果44</option>
+      <option value="平果5">平果55</option>
+    </select>
+    <div>单选结果:{{fruit}}</div>
+    <select name="a" id="" v-model="fruits" multiple>
+      <option value="平果1">平果11</option>
+      <option value="平果2">平果22</option>
+      <option value="平果3">平果33</option>
+      <option value="平果4">平果44</option>
+      <option value="平果5">平果55</option>
+    </select>
+    <div>多选结果:{{fruits}}</div>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello',
+        sex: '',
+        isAgree: false,
+        hobby: [],
+        fruit: '平果1',
+        fruits: []
+      },
+      computed: {
+        mess() {
+          return this.message
+        }
+      },
+      methods: {
+        change(event) {
+          console.log(111);
+          this.message = event.target.value
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
