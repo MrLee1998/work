@@ -10,9 +10,12 @@
 
 <body>
   <div id="app">
-    <input type="text" v-model="message">
+    <!--  v-model修饰符  .lazy  .number .trim(去除空格) -->
+    <input type="text" v-model.lazy="message">
+    <input type="number" v-model.number="message">
+    <input type="text" v-model.lazy="message">
     <input type="text" :value="message" @input="change">
-    <div>{{message}}</div>
+    <div>{{typeof(message)}}{{message}}</div>
     <div>{{mess}}</div>
     <label class="" for="male">
       <input type="radio" id="male" name="sex" value="男" v-model="sex"> 男
