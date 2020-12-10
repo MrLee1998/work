@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <com :message="message" @itemadd="itemadd"></com>
+    <div v-show="result.id">{{result.name}}</div>
+  </div>
+  <template id="com">
+    <div>
+      <button v-for="(item,index) in categories" :key="index" @click="add(item)">{{item.name}}</button>
+    </div>
+  </template>
+  <script>
+    const com = Vue.extend({
+      template: '#com',
+      props: {
+        message: {
+          type: String,
+          default: 0,
+          require: true   // 强制不能为空
+        }
+      },
+      data() {
+        return {
+          categories: [
+            { id: 1, name: '前端'},
+            { id: 2, name: '全栈'},
+            { id: 3, name: '后端'},
+            { id: 4, name: '架构'}
+          ]
+        }
+      },
+      methods: {
+        add(item) {
+          console.log(item.name);
+          this.$emit('itemadd', item)
+        }
+      }
+    })
+    Vue.component('com',com)
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isActive: true,
+        message: '11',
+        result: {}
+      },
+      methods: {
+        itemadd(res) {
+          console.log(res);
+          this.result = res
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
