@@ -166,7 +166,6 @@ const state = {
     }]
   }],
   ansowerId: [] // 答案的id
-
 }
 export default new Vuex.Store({
   state: state,

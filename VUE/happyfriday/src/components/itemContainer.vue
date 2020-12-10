@@ -17,20 +17,21 @@
 					<header class="item_title">{{itemDetail[itemNum - 1].topic_name}}</header>
 					<ul>
 						<li class="item_list" v-for="(item, index) in itemDetail[itemNum - 1].topic_answer" :key="index" 
-								@click="choosed(index, item.topic_answer_id)">
+								@click="choosed(index, item.is_standard_answer)">
 							<span class="option_style" :class="{'has_choosed': choosedNum == index }">{{ chooseType(index) }}</span>
 							<span class="option_detail">{{item.answer_name}}</span>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<span class="next_item button_style" @click="nextItem"></span>
+			<span class="next_item button_style" @click="nextItem" v-if="itemNum < itemDetail.length"></span>
+			<span class="submit_item button_style" v-else @click="submitAnsower"></span>
 		</div>
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   props: [ 'fatherComponent' ],
   data() {
@@ -68,9 +69,23 @@ export default {
 				// 清除chooseNum
 				// 保存答案   题目索引加 1  ， 跳到下一题
 				this.choosedNum = null
+				// this.itemNum++
+				this.addNum(this.choosedId)
+
 			}
 			else{
 				alert('请选择答案!')
+			}
+		},
+		...mapActions(['addNum']),
+		submitAnsower() {
+			// 到达在最后一题提交问卷
+			if(this.choosedNum !== null) {
+				this.addNum(this.choosedId)
+				this.$router.push('/score')
+			}
+			else {
+				alert('请选择答案')
 			}
 		}
 	}
