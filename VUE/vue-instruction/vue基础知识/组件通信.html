@@ -16,6 +16,8 @@
   <template id="com">
     <div>
       <button v-for="(item,index) in categories" :key="index" @click="add(item)">{{item.name}}</button>
+      <h2>{{message}}</h2>
+      <h2>{{newNum}}</h2>
     </div>
   </template>
   <script>
@@ -36,12 +38,17 @@
             { id: 3, name: '后端'},
             { id: 4, name: '架构'}
           ]
-        }
+        } 
       },
       methods: {
         add(item) {
           console.log(item.name);
           this.$emit('itemadd', item)
+        }
+      },
+      computed: {
+        newNum() {
+          return `${Number(this.message)+1}`
         }
       }
     })

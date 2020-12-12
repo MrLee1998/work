@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn ref="aa"></cpn>
+    <cpn ref="aa"></cpn>
+    <cpn ref="aa"></cpn>
+    <cpn ref="aa"></cpn>
+    <button @click="btnClick">children</button>
+  </div>
+  <template id="cpn">
+    <div>
+      <div>hello</div>
+      <button @click="show">打印</button>
+    </div>
+    
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          num: 1,
+          newNum: 2,
+          parentMessage: '我是你爸爸'
+        }
+      },
+      methods: {
+        btnClick() {
+          console.log(this.$children);
+          console.log(this.$children[0]);
+          console.log(this.$refs);
+          // refs 默认为空  组件绑定
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          methods: {
+          showMessage() {
+            console.log('message');
+          },
+          show() {
+            console.log(this.$parent);
+            console.log(this.$parent.parentMessage);
+          }
+        }
+        }, 
+      }
+    })
+  </script>
+</body>
+
+</html>
