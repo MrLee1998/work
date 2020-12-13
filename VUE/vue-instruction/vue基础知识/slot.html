@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <cpn><button>按钮</button></cpn>
+    </div>
+    <div>
+      <cpn><span>你好</span></cpn>
+    </div>
+    <div>
+      <cpn><span slot="center">我改变可</span></cpn>
+    </div>
+    <div>
+      <cpn>
+        <template slot-scope="slot">
+          <div><span>{{slot.data.join( '*' )}}</span></div>
+        </template>
+      </cpn>
+    </div>
+  </div>
+  <template id="cpn">
+    <div>
+      <div>hahh</div>
+      <slot name="right"><span>左边</span></slot>
+      <slot name="center"><span>中间</span></slot>
+      <slot name="left"><span>右边</span></slot>
+      <slot :data="Language">
+        <ul>
+          <li v-for="item in Language">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      methods: {
+
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              Language: ['chinese', 'american', 'c', 'c#', 'ts']
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
