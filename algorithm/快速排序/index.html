@@ -1,0 +1,39 @@
+<script>
+    let arr2 = [{age:1},{age:3},{age:5},{age:2}]
+    arr2.sort((a,b) =>{
+        return a.age -b.age
+    })
+    console.log(arr2);
+
+    // .sort((a,b)=> a-b )
+    function cb(a,b) {
+        return b-a
+    }
+    function partition(arr, left, right) {
+        if (left >= right) { return; }
+        let privt = arr[left];
+        let i = left, j = right;
+        while (i < j) {
+            // 在右边找到 <privt
+            while (cb(arr[j],privt)>=0 && i < j) {
+                j--;
+            }
+            arr[i] = arr[j]
+            // 右边找到 >privt 
+            while (cb(arr[i],privt)<=0 && i < j) {
+                i++
+            }
+            arr[j] = arr[i]
+
+        }
+        arr[i] = privt;
+        // i === j 基准值的位置
+        partition(arr, left, i - 1) // 在i的位置隔开
+        partition(arr, i + 1, right)
+    }
+    function sort(arr) {
+        partition(arr, 0, arr.length - 1);
+        return arr
+    }
+    console.log(sort([-1, -3, 5, 2, 9, -6, 6]));
+</script>

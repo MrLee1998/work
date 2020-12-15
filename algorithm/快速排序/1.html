@@ -1,0 +1,25 @@
+<script>
+  let arr = [31, 23, 34, 2, 13, 234];
+  function quickSort(arr) {
+    let left_arr = [],
+        right_arr = [],
+        base_num = arr[0];
+    for(let i=1; i<arr.length; i++) {
+      if(arr[i] > base_num) {
+        right_arr.push(arr[i])
+      }
+      else {
+        left_arr.push(arr[i])
+      }
+      
+    }
+    if(left_arr.length >= 2){
+      left_arr = quickSort(left_arr);
+    }
+    if(right_arr.length >= 2){
+      right_arr = quickSort(right_arr);
+    }
+    return left_arr.concat(base_num, right_arr)
+  }
+  console.log(quickSort(arr));
+</script>
