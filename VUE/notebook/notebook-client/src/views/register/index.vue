@@ -54,7 +54,7 @@ export default {
         return ;
       }
        // 发起接口请求
-      this.$http({
+    this.$http({
       method: 'post',
       url: this.$util.baseUrl + 'users/userRegister',
       data: {
@@ -63,8 +63,12 @@ export default {
         nickname: this.nickname.trim()
       }
     }).then( res => {
-      console.log(res);
-    })
+      if (res.data.code == '80000') {
+        this.$router.push('/starLogin')
+      } else {
+        this.$toast(res.data.mess)
+      }
+    }) 
     }
   }
 }
