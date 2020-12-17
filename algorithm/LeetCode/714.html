@@ -1,0 +1,21 @@
+<script>
+  var maxProfit = function(prices, fee) {
+    let buyMinPrice = prices[0];
+    let result = 0, temp, i = 0;
+    while(++i < prices.length) {
+      if(prices[i] < buyMinPrice) {
+        buyMinPrice = prices[i]
+        console.log(buyMinPrice);
+      } else  {
+        if((temp = prices[i] - buyMinPrice - fee) > 0) {
+          result += temp;
+          buyMinPrice = prices[i] - fee
+          console.log(buyMinPrice);
+        }
+      }
+    }
+    return result
+  }
+  let prices = [1, 3, 2, 8, 4, 9], fee = 2;
+  console.log(maxProfit(prices, fee));
+</script>
