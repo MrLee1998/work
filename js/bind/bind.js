@@ -20,7 +20,7 @@ Function.prototype.mybind = function (thisArg) {
         nop.prototype = this.prototype
     }
     bound.prototype = new nop()
-    return bound
+    return bound   // 返回的是函数
 }
 let res = a.mybind(b,4,5)
 let fun = new res()

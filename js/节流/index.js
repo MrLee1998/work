@@ -10,6 +10,5 @@ function throttle(fn, delay) {
             fn.apply(context, arg)
             prev = now
         }
-    }
-    
+    } 
 }

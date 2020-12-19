@@ -17,7 +17,7 @@ Function.prototype.myapply = function (thisArg) {
     // 数组方法  slice 左闭右开 下标1开始 下标3之前结束 取到下标2  不影响原数组
     //           splice(1,3) 下标1开始 取三个值 影响原数组
     const args = arguments[1]
-
+    console.log(...args);
     // 将调用call函数的方法添加到thisArg 的属性中
     thisArg[fn] = this
     const result = thisArg[fn](...args)

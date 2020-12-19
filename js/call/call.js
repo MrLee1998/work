@@ -1,11 +1,10 @@
 let b = {
     name: 'brooth'
 }
-function a () {
+function a(m,n) {
+    console.log(m+n);
     console.log(this.name);
 }
-
-
 Function.prototype.mycall = function (thisArg) {
     if( typeof this !== 'function') {
         throw new TypeError('你个鬼东西....')
@@ -19,9 +18,11 @@ Function.prototype.mycall = function (thisArg) {
     thisArg = thisArg || global || window
     
     // 将调用call函数的方法添加到thisArg 的属性中
+    console.log(this); // function a()
     thisArg[fn] = this
-    const result = thisArg[fn](...arg)
+    const result = thisArg[fn](...arg) //
+    // console.log(thisArg[fn](...arg));
     delete thisArg[fn]
     return result
 }
-a.mycall(b)
+a.mycall(b,1,2)

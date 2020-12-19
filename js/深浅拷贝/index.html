@@ -1,0 +1,26 @@
+
+<script>
+  let a = 1;
+  let b = a;
+  a = 2;
+  console.log(a, b); 
+  let c = {
+    name: 'pp'
+  }
+  let d = c;
+  c.name = 'yay'
+  console.log(c, d);
+
+  let arr = ['海湾', '大鱼海棠', 'c++']
+  let newArr = arr.concat()
+  arr[0] = '海王'
+  console.log(arr, newArr);
+  // concat slice 原始类型深拷贝  应用类型浅拷贝  
+
+  let jArr = [{old: 'old'},'海湾', '大鱼海棠', 'c++']
+  let new_jArr = JSON.parse(JSON.stringify(jArr))
+  jArr[0].old = 'new'
+  console.log(new_jArr);
+
+  
+</script>
