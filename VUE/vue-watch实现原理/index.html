@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{count}}</p>
+    <button @click="add">+</button>
+    <button @click="reduce">-</button>
+    <div>{{msg}}</div>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data () {
+        return{
+          count: 0,
+          msg: 'hello'
+        }
+      },
+      methods: {
+        add() {
+          // console.log('加');
+          return this.count++
+        },
+        // add: function() {
+
+        // },
+        reduce() {
+          // console.log('减');
+          return this.count--
+        }
+      },
+      watch: {
+        count(newVal, oldVal) {
+          console.log(oldVal);
+          if (newVal >= 10) {
+            this.msg = ' hahhah'
+          } else {
+            this.msg = 'hello'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
