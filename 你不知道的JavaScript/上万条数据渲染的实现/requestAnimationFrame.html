@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="container"></ul>
+  <script>
+    let now = Date.now()
+    let total = 100000
+    let once = 20
+    let page = total / once
+    let ul = document.getElementById('container')
+    function loop(curTotal, curIndex) {
+      if (curTotal <= 0) { return false }
+      // 每页多少条数据
+      let pageCount = Math.min(curTotal, once)
+      window.requestAnimationFrame(() => {
+         // documentFragment
+        let fragment = document.createDocumentFragment() // 创建文件片段  减少页面回流
+        for (let i = 0; i < pageCount; i++) {      
+          let li = document.createElement('li')
+          li.innerHTML = (Math.random() * total)
+          fragment.appendChild(li)
+          console.log((curTotal - pageCount), (i + curIndex));
+        }
+        ul.appendChild(fragment)
+        loop((curTotal - pageCount), (curIndex + pageCount))
+      })
+    }
+    loop(total, page)
+  </script>
+</body>
+
+</html>

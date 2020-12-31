@@ -10,7 +10,8 @@ function Person(name) {
     // this.name = name
 }
 var person = new Person('lz')  //new 实例化 创建一个对象
-console.log(person);
+person.name = 'lz'
+console.log(person.name);
 person.say()
 //它定义了构造函数制造出来的对象的公共祖先 
 var person1 = new Person()

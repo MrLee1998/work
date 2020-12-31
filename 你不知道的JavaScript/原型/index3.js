@@ -4,7 +4,7 @@ function Person(name) {
 }
 var person=new Person('zz')
 // console.log(person.lastName);
-person.lastName='w'  // 没有改动原型属性 ，只能同过原型改动
+person.lastName='w'  // 没有改动原型属性 ，只能通过原型改动
 console.log(person.lastName);
 console.log(Person.prototype.lastName);
 console.log(person);
@@ -21,5 +21,5 @@ function Car(){
 var car = new Car()
 console.log(Car.prototype); // funtion Car(){}
 console.log(car.constructor);
-// constructor 指向的时Car(),目的是让Car()构造出来的对象找到自己的来历
+// constructor 指向的是Car(),目的是让Car()构造出来的对象找到自己的来历
 // car.constructor

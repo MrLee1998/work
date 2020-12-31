@@ -9,7 +9,8 @@ console.log(person);
 function Car(color){
     this.color=color
     this.name='bm'
-    return {}
+    // return {}
 }
 var car = new Car('pink')
+// car.color = 'pink'
 console.log(car); //{}

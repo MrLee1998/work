@@ -10,4 +10,6 @@ function Car(color,owner){
 }
 var car = new Car('red','ttt')
 console.log(car);
-console.log(car.color);
+console.log(car.name);
+console.log(car.lang);
+console.log(car.height);

@@ -7,7 +7,9 @@ function test(){
     function b(){
         console.log(food);
     }
+    return a
 }
+console.log(test());
 test()
 
 function fruit() {
@@ -25,7 +27,7 @@ function fruit() {
             food=myfood
         }
     }
-    return obj
+    return obj  // 将friut = obj  调用obj 里的函数 形成闭包 
 }
 var person=fruit()
 var food='banana'
