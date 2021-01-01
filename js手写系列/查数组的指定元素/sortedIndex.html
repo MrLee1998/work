@@ -1,0 +1,27 @@
+<script>
+   function sortedIndex(array, obj, iteratee, context) {
+    iteratee = cb(iteratee, context)
+    let s = 0
+    let l = array.length
+    let mid = Math.floor(( s + l) / 2)
+    while (s < l) {
+      mid = Math.floor(( s + l )/ 2)
+      if (obj < array[mid]) {
+        l = mid
+      } else if(obj > array[mid]) {
+        s = mid + 1
+      } else{
+        return mid
+      } 
+    }   
+    return l
+   }
+   function cb(func, context) {
+     // void 0 === undefined
+     if (context === void 0) return func;
+     return function() {
+      return func.apply(context, arguments)
+     }
+   }
+  console.log(sortedIndex([10, 10, 30, 40 ,50], 25))
+</script>

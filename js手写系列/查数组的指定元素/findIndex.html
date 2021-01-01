@@ -1,0 +1,22 @@
+<script>
+  function isBigEnough(element) {
+    return element >= 15
+  }
+  let arr = [12,15,11,64,12,9]
+  console.log(arr.findIndex(isBigEnough));  // findIndex找到一个就返回结束回调
+
+  // 实现
+  function findIndex(array, predicate, context) {
+    for (let i = 0; i < array.length; i++) {
+      if(predicate.call(context,array[i], i, array)) { // call防止this作用域问题
+        return i
+      }
+    }
+    return -1
+  }
+  console.log(findIndex([1,2,4,5,1], function(item, i, array) {
+    if (item == 3) {
+      return true // 2
+    }
+  }));
+</script>

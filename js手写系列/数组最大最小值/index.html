@@ -1,0 +1,19 @@
+<script>
+  // let array = [1,3,2,5,9,0]
+  // console.log(Math.max(...array));
+  // console.log(Math.min(...array));
+  let array = [1,3,2,5,9,0]
+  // let max = array[0]
+  // for(let i in array) {
+  //   if(max < array[i]) {
+  //     max = array[i]
+  //   }
+  // }
+  // console.log(max);
+  function max(pre, next) {
+    return Math.max(pre, next)
+  }
+  console.log(array.reduce(max));
+  let m = eval("Math.max(" + array +")")
+  console.log(m);
+</script> 
