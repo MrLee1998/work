@@ -1,0 +1,6 @@
+# composition api
+
+# 新增三个组件
+  fragment： vue组件不在需要根节点
+  Teleport:   渲染vue的组件内容到指定的dom节点上
+  Suspense:   实现异步组件
