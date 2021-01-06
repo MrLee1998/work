@@ -23,17 +23,17 @@ function observer(target) {  // 观察者
    target.__proto__ = proto 
  } 
  for(let key in target) {
-  // if(typeof target[key] === 'object' && target[key] !== null) {
-  //   observer(target[key])
-  // }
+  if(typeof target[key] === 'object' && target[key] !== null) {
+    observer(target[key])
+  }
   defineReactive(target, key, target[key])
  }
 
 }
 function defineReactive(target, key, value) {
-  if( typeof value == 'object' && value !== null) {
-    observer(value)
-  }
+  // if( typeof value == 'object' && value !== null) {
+  //   observer(value)
+  // }
   Object.defineProperty(target, key, {
     get() {
       return value
