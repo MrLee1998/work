@@ -45,6 +45,7 @@ import { onMounted, reactive, toRefs, nextTick } from "vue";
 import { getHome } from "../service/home";
 import { Toast } from "vant";
 import goodsList from "@/components/GoodsList";
+import { getLocal } from '../common/js/util'
 
 export default {
   name: "home",
@@ -113,8 +114,13 @@ export default {
       hotGoodses: [],
       recommendGoodses: "",
       headerScroll: false,
+      isLogin: false
     });
     onMounted(async () => {
+      const token = getLocal('token')
+      if(token) {
+        state.isLogin = true
+      }
       Toast.loading({
         message: "加载中...",
         forbidClick: true,
