@@ -43,7 +43,7 @@
     </div>
 
     <van-submit-bar
-      v-if="true"
+      v-if="list.length > 0"
       :price="total * 100"
       button-text="结算"
       @submit="onSubmit"
@@ -53,7 +53,7 @@
         >全选</van-checkbox
       >
     </van-submit-bar>
-    <div class="empty" v-if="false">
+    <div class="empty" v-else>
       <img
         class="empty-cart"
         src="//s.yezgea02.com/1604028375097/empty-car.png"
@@ -74,6 +74,7 @@ import SimpleHeader from "../components/SimpleHeader";
 import navBar from "@/components/NavBar.vue";
 import { Toast } from "vant";
 import { getCart, modifyCart, deleteCartItem } from "../service/cart";
+import { useRouter } from 'vue-router'
 
 export default {
   components: {
@@ -81,6 +82,7 @@ export default {
     navBar,
   },
   setup() {
+    const router = useRouter()
     const state = reactive({
       result: [],
       list: [],
@@ -159,14 +161,28 @@ export default {
     };
 
     const deleteGood = async (id) => {
-      console.log(id);
-      if (id) {
-        await deleteCartItem(id);
+      const { resultCode } = await deleteCartItem(id);
+      if (resultCode === 200) {  
         const { data } = await getCart({ pageNumber: 1 });
-        console.log(data);
         state.list = data;
+      } else {
+        Toast({
+          message: 'error',
+          forbidClick: true
+        })
       }
     };
+    const goTo = () => {
+      router.push('/home')
+    }
+    const onSubmit = () => {
+      if(state.result.length === 0) {
+        Toast.fail('请选择商品进行结算')
+        return
+      }
+      const params = JSON.stringify(state.result)
+      router.push({ path: '/create-order', query: {cartItemId: params}})
+    }
     return {
       ...toRefs(state),
       allCheck,
@@ -174,6 +190,8 @@ export default {
       total,
       numChange,
       deleteGood,
+      goTo,
+      onSubmit
     };
   },
 };
@@ -245,7 +263,7 @@ export default {
     width: 50%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 100px;
     .empty-cart {
       width: 150px;
       margin-bottom: 20px;
