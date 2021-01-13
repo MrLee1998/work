@@ -26,38 +26,76 @@
 <script>
 import { toRefs, reactive, onMounted } from "vue";
 import SimpleHeader from "../components/SimpleHeader";
+import { getAddressList } from '../service/address'
+import { useRouter, useRoute } from 'vue-router'
+
 export default {
   components: {
     SimpleHeader,
   },
   setup() {
+    const route = useRoute()
+    const router = useRouter()
     const state = reactive({
       chosenAddressId: '1',
-      list: [
-        {
-          id: "1",
-          name: "张三",
-          tel: "13000000000",
-          address: "浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室",
-          isDefault: true,
-        },
-        {
-          id: "2",
-          name: "李四",
-          tel: "1310000000",
-          address: "浙江省杭州市拱墅区莫干山路 50 号",
-        },
-      ],
+      list: [],
+      from: route.query
     });
-    onMounted(() => {
+    onMounted( async () => {
       // 请求所有的地址列表
+      const { data } = await getAddressList()
+      if(!data) {
+        state.list = []
+        return
+      }
+      state.list = data.map(item => {
+        return {
+          id: item.addressId,
+          name: item.userName,
+          tel: item.userPhone,
+          address: `${item.provinceName} ${item.cityName} ${item.regionName} ${item.detailAddress}`,
+          isDefault: item.defaultFlag === 1 ? true : false 
+        }
+      })
     });
+
+    const onAdd = () => {
+      router.push({path: 'address-edit', query: {type: 'add', from: state.from}})
+    }
+
+    // 选中地址
+    const select = (item) => {
+      console.log(item);
+      router.push({path: '/create-order', query: { addressId: item.id, from: state.from}})
+    }
+
+    const onEdit = (item) => {
+      console.log(item);
+      router.push({path: 'address-edit', query: {type: 'edit', addressId: item.id, from: state.from}})
+      
+    }
     return {
       ...toRefs(state),
+      onAdd,
+      select,
+      onEdit
     };
   },
 };
 </script>
 
-<style>
+<style lang="less">
+@import "../common/style/mixin";
+.address-box {
+  .van-radio__icon {
+    display: none;
+  }
+  .address-item {
+    margin-top: 44px;
+    .van-button {
+      background: @primary;
+      border-color: @primary;
+    }
+  }
+}
 </style>
