@@ -19,3 +19,7 @@ export function addAddress(params) {
 export function editAddress(params) {
   return axios.put('/address', params)
 }
+
+export function deleteAddress(id) {
+  return axios.delete(`/address/${id}`)
+}
