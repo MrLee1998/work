@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    // axios 基本使用
+    axios({
+      url: 'http://api.zhuishushenqi.com/cats/lv2/statistics',
+      params: {
+        id: '1'
+      },
+      method: 'get'
+    }).then(res => {
+      console.log(res);
+    })
+    axios({
+      url: 'http://api.zhuishushenqi.com/cats/lv2/statistics',
+      data: {
+        name: 'lz',
+        age: 12
+      },
+      method: 'post'
+    }).then(res => {
+      console.log(res);
+    })
+
+    // 请求方式
+    axios.get('http://api.zhuishushenqi.com/cats/lv2/statistics').then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.get('http://api.zhuishushenqi.com/cats/lv2/statistics', {params: {id: 1}}).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.post('http://api.zhuishushenqi.com/cats/lv2/statistics').then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.post('http://api.zhuishushenqi.com/cats/lv2/statistics', "name = 'zl' && age =  12").then(res => {  // 根据就扣数据格式发送
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+
+
+    //  axios 并发请求
+    axios.all([
+      axios.get('http://api.zhuishushenqi.com/cats/lv2/statistics'),
+      axios.get('http://api.zhuishushenqi.com/cats/lv2/statistics', {params: {id: 1}})
+    ]).then(res => {
+      console.log(res); // 数据是个数组
+    }).catch(err => {
+      console.log(err);
+    })
+  </script>
+</body>
+</html>
