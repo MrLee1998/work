@@ -1,0 +1,28 @@
+ 响应式数据更新
+    触发 watcher 观察者里面的回调vm._updata函数， 去通知页面更新
+    这个过程中vm._render() 生成新的vnode
+    vm._update 就会带着新的 vnode 去触发__path__ 过程(虚拟dom和真实dom比较)
+
+    __path__ 过程
+    对比新旧节点是否是相同的节点 (isSameNode)
+    不是相同节点 isSameNode === false 直接销毁旧的vnode， 渲染新的vnode
+    如果新vnode是文字vnode， 就直接调用浏览器api替换文字
+    如果新的vnode有children， 旧的vnode没有， 直接addnode
+    如果新的vnode没有children， 旧的vnode有， 直接removenode 旧的vnode节点的children
+
+     diff算法  提高结点的复用性 
+    diff核心比较
+    let oldStarIdx = 0 // 旧首节点
+    let newStarIdx = 0 // 新首节点
+
+    let oldEndIdx = oldCh.length - 1 // 旧尾节点
+    let newEndIdx = newCh.length - 1 // 旧尾节点
+
+    function sameVnode(a, b) {
+      return(
+        a.key === b.key && (
+          a.tag === b.tag && a.isComment === b.isComment 
+          && isDef(a.data) === isDef(b.data) && sameInputType(a, b)
+        )
+      )
+    }
