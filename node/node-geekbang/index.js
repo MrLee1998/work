@@ -11,9 +11,15 @@ app.use(
 )
 
 app.use(
-  mount('/', async(ctx) => {
+  mount('/', async (ctx) => {
     ctx.body = fs.readFileSync(__dirname + '/source/index.html', 'utf-8')
   })
 )
 
+// node服务像后端服务器做RPC通信拿到真实数据
+// 模板引擎放上真实数据之后
+// 根据浏览器请求的渎职， 去返回对应的模板引擎
+
 app.listen(3000)
+
+

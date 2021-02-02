@@ -3,7 +3,8 @@
     "pages/bookCity/bookCity",
    "pages/my/my",
    "pages/list/list",
-   "pages/bookSection/bookSection"
+   "pages/bookSection/bookSection",
+   "pages/bookContent/bookContent"
    
   ],
   "tabBar": {
@@ -34,7 +35,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#be3948",
-    "navigationBarTitleText": "笔趣阁",
+    "navigationBarTitleText": "乐读",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"

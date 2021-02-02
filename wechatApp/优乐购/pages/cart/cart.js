@@ -1,66 +1,48 @@
 // pages/cart/cart.js
+import {getSetting, chooseAddress, openSetting} from "../../utils/asyncWx.js"
+import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    address: {},
+    cart: [],
+    allCheck: false
   },
+  onShow: function() {
+    const address = wx.getStorageSync('address')
+    // console.log(address); 
+    const cart = wx.getStorageSync('cart') ||[];
+    console.log(cart.length);
+    let allCheck=true
+    console.log(allCheck);
+    
+    this.setData({
+      address,
+      cart,
+      allCheck
+    })
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  
   },
+  async handleAddress(){
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    try {
+      const res1 = await getSetting();
+      const scopeAddress = res1.authSetting["scope.address"]
+      if(scopeAddress===false){
+        await openSetting();
+      }
+      let address = await chooseAddress();
+      address.all = address.provinceName+address.cityName+address.countyName+address.detailInfo
+      // 存入到缓存中
+      wx.setStorageSync('address',address)
+    }  catch (error) {
+      console.log(error);
+      
+    }
+    
   }
 })

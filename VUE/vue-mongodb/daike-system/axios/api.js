@@ -45,7 +45,7 @@ export default function $axios(options) {
         } else {
           data = response.data
         }
-        data = JSON.parse(data)   // 将后端数据格式化为JSON格式
+        // data = JSON.parse(data)   // 将后端数据格式化为JSON格式
         const message = data.msg || 'Error'
         switch (data.code) {
           case 0:

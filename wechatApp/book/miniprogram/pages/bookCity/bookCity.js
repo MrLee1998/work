@@ -28,7 +28,7 @@ Page({
     })
   },
   toReading(e) {
-    // console.log(e.currentTarget.dataset.url)
+    console.log(e)  //获取的是data-url的值
     let url = e.currentTarget.dataset.url
     wx.navigateTo({
       url: `../bookSection/bookSection?url=${url}`,

@@ -29,3 +29,13 @@
     4. 前端请求
     5. 跨域 不只是域名  端口和协议不一样都算跨域
     6. App.all 后端配置解决的
+
+  - 基于mongodb 数据流 -》 MVC node(express)
+  -> Vue 界面
+    1. model 层的构建 
+       这是个精简版的model层 
+       index.js  所有的模型定义
+       mongoose.Schema 根据数据库结构定义
+       生成类
+    2. postman 测试数据
+      - 路由

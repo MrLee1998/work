@@ -15,3 +15,24 @@
  遍历数组返回的是下表
  会遍历原型上的值和手动添加的值
  特殊情况下，遍历的顺序不会按照对象的顺序进行
+
+ aync 
+
+ class
+
+ 装饰器
+
+ # map 
+ 可以创建一个新的数组 即定义键值对的集合
+ 方法
+ clear
+ delete
+ forEach
+ get 
+ has
+ set
+ toString
+ valueof
+ 
+
+ 

@@ -4,7 +4,7 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "enhance": true,
+    "enhance": false,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
@@ -30,9 +30,11 @@
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "bundle": false
   },
   "appid": "wxee5934d1dea22e76",
   "projectname": "book",
@@ -61,6 +63,11 @@
           "name": "pages/bookSection/bookSection",
           "pathName": "pages/bookSection/bookSection",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/bookContent/bookContent",
+          "pathName": "pages/bookContent/bookContent",
           "scene": null
         }
       ]

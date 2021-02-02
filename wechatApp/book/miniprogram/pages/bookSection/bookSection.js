@@ -69,7 +69,7 @@ Page({
     if (url) {
       db.collection('book').where({
         userId: app.globalData.openid,
-        bookName: this.data.bookDetailData.bookName
+        bookName: this.data.bookDetailData.name
       }).get().then(res => {
         let data = res.data || []
         if(data.length > 0) {
@@ -88,7 +88,7 @@ Page({
     }
     // 已经存在书架的书，记录阅读状态
     wx.navigateTo({
-      url: `../bookContent/bookContent?url = ${url}&name= ${this.data.bookDetailData.name}&imgurl= ${this.data.bookDetailData.imgurl}`,
+      url: `../bookContent/bookContent?url=${url}&name=${this.data.bookDetailData.name}&imgurl=${this.data.bookDetailData.imgurl}`,
     })
   },
   joinBook(e) {

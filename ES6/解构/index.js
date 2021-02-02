@@ -32,6 +32,6 @@ let obj = {
 }
 let {p: [x, {y}]} = obj
 console.log(x + y); // hello word
-
+console.log(x);
 const [a, b, c, d, e] = 'hello'
 console.log(e);

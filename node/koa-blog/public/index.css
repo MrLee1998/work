@@ -16,6 +16,7 @@ blockquote {
 
 body {
     margin-bottom: 20px;
+    background-image: url('./images/7.jpg');
 }
 ul,li{
     list-style-type: none;

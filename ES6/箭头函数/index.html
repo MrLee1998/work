@@ -16,7 +16,7 @@
         const button2 = document.getElementById('btn2')
         button2.addEventListener('click', () => {
             console.log(this);
-            this.innerHTML = 'hello'
+            this.innerHTML = 'hello' // 箭头函数内使用this和arguments，访问的是外层函数作用域的this和arguments。
         })
     </script>
 </body>

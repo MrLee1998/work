@@ -24,11 +24,37 @@
       </div>
     </div>
     <div class="cut-off"></div>
+    <div class="comment-detail" ref="commentwrapper">
+      <ul>
+        <li class="foodsList" v-for="(item,index) in goods" :key="index">
+          <ul>
+            <li class="foodItem" v-for="(food,index) in item.foods" :key="index"> 
+              <ul>
+                <li class="ratingItem" v-for="(rating, index) in food.ratings" :key="index">
+                  <div class="detail-left">
+                    <img :src="rating.avatar" alt="">
+                  </div>
+                  <div class="detail-right">
+                    <div class="right-title">
+                      <div class="userName">{{rating.username}}</div>
+                      <div class="ratingTime">{{rating.rateTime}}</div>
+                    </div>
+                    <div class="ratingStar">{{rating.rateType}}</div>
+                    <div class="comment-text">{{rating.text}}</div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import { getGoods } from '@/api'
+import BScroll from 'better-scroll'
 export default {
   props: {
     seller: {
@@ -45,6 +71,14 @@ export default {
       console.log(res);
       this.goods = res  
     })
+  },
+  methods: {
+    _initScroll() {
+      this.menuScroll = new BScroll(this.$refs.commentwrapper, {
+        // scrollY: true,
+        click: true
+      })
+    }
   }
 }
 </script>

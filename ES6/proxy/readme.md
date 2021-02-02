@@ -1,0 +1,3 @@
+# defineProperty 和 Proxy
+defineProperty 只能定义属性的读（get） 和写（set）， Proxy可以定义更多的行为 比如： in, delete ...
+

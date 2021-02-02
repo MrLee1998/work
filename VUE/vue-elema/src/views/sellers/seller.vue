@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="seller" ref="menuwrapper">
+  <div ref="menuwrapper">
+    <div class="seller" style="minWidth: 0px">
       <div class="seller-detail">
         <div class="detail-top">
           <div class="detail-left">
@@ -73,6 +73,7 @@ export default {
         // scrollY: true,
         click: true
       })
+      console.log(this.menuScroll);
     },
     collect() {
 
@@ -92,6 +93,7 @@ export default {
 <style lang="stylus" scoped>
 .seller 
   overflow hidden 
+
   .seller-detail
     .detail-top
       display flex
@@ -194,5 +196,6 @@ export default {
           margin: 0 20px;  
         .text 
           color: #333;
-          font-size: 12px; 
+          font-size: 12px;
+          height 42px
 </style>

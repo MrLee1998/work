@@ -121,6 +121,7 @@ export default {
         // scrollY: true,
         click: true
       })
+      console.log(this.menuScroll);
       this.foodsScrool = new BScroll(this.$refs.foodswrapper, {
         click: true,
         probeType: 3

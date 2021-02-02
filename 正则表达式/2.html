@@ -1,12 +1,5 @@
 <script>
-  let html = `
-    <div>
-      {{name}}
-      <p>
-        {{age}}
-      </p>
-    </div>
-  `
+  let html = ` <div>{{name}} <p> {{age}} </p></div> `
   let obj = {
     name: '小米',
     age: 19
@@ -20,6 +13,7 @@
       str = str.replace(info[0], v)
       console.log(reg.lastIndex);
       console.log(info);
+      reg.lastIndex = 0
       info = reg.exec(str);
     }
     return str

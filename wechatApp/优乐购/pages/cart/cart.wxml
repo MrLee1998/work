@@ -1,2 +1,55 @@
-<!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view class="revice_address_row">
+  <!-- 收货地址不存在时显示按钮 -->
+  <view class="address_btn" wx:if="{{!address.userName}}">
+    <button bindtap="handleAddress" type="primary" plain>获取收货地址</button>
+  </view>
+  <view wx:else class="user_info_row">
+    <view class="user_info">
+      <view>{{address.userName}}</view>
+      <view>{{address.all}}</view>
+    </view>
+    <view class="user_phone">{{address.telNumber}}</view>
+   </view>
+</view>
+<!-- 购物车部分 -->
+<view class="cart_content">
+  <view class="caet_title"></view>
+  <view class="cart_main">
+    <view class="cart_item" wx:for="{{cart}}" wx:key="">
+      <view class="cart_chk_wrap">
+        <checkbox-group bindchange="">
+          <checkbox checked="{{item.checked}}"></checkbox>
+        </checkbox-group>
+      </view>
+      <navigator class="cart_img_wrap">
+        <image mode="widthFix" src="http://image1.suning.cn/uimg/b2c/newcatentries/0070134290-000000000149003877_1_200x200.jpg"/>
+      </navigator>
+      <view class="cart_info_wrap">
+        <view class="goods_name">{{item.goods_name}}</view>
+        <view class="goods_price_wrap">
+          <view class="goods_price">${{item.goods_price}}</view>
+          <view class="cart_num_tool">
+            <view class="num_edit">-</view>
+            <view class="goods_num">{{item.num}}</view>
+            <view class="num_edit">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 底部工具栏 -->
+<view class="footer_tool">
+  <view class="all_check_wrap">
+    <checkbox-group bindchange="">
+      <checkbox checked="{{allCheck}}">全选</checkbox>
+    </checkbox-group>
+  </view>
+  <view class="total_price_wrap">
+    <view class="total_price">
+      合计: <text class="total_price_text">$200</text>
+    </view>
+    <view>包含运费</view>
+  </view>
+  <view class="order_pay_wrap">结算{{}}</view>
+</view>

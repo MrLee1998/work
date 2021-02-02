@@ -36,7 +36,7 @@ function unique4(arr) {
     return
   }
   arr = arr.sort()
-  var array = [arr[0]]
+  var array = []
   for(let i=0;i<arr.length;i++){
     if(arr[i] !== arr[i-1]){
       array.push(arr[i])
@@ -53,7 +53,7 @@ function unique5(arr) {
     return
   }
   var array = []
-  var obj = {}
+  var obj = []
   for(let i=0;i<arr.length;i++){
     if(!obj[arr[i]]) {
       array.push(arr[i])

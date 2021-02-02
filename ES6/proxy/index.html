@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="input">
+        <span id="span"> hello </span>
+    </div>
+    <script>
+        const data = {
+            _text: 'hello word'
+        }
+        const input = document.getElementById('input')
+        const span = document.getElementById('span')
+        // input.addEventListener('change', (e)=> {
+        //     console.log(e.target.value);
+        //     span.innerHTML = e.target.value
+        // })
+
+        // 数据劫持
+        Object.defineProperty(data, 'text', {
+            get() {
+                // console.log('获取数据');
+                // return 'hello word'
+                return data._text
+            },
+            set(newValue) {
+                console.log(newValue);
+                span.innerHTML = newValue
+            }
+        })
+        // data.text= '111'
+        
+        input.addEventListener('keyup',function(e){
+            console.log(e.target.value);
+            data.text = e.target.value
+            console.log('new Data:' + data.text);
+        })
+        
+    </script>
+</body>
+
+</html>

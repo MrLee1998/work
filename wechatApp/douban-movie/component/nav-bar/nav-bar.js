@@ -29,7 +29,6 @@ Component({
         topHeight: '',
         statusBarStyle: '',
         navBarStyle: ''
-
     },
 
     /**

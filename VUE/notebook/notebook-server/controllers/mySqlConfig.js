@@ -32,8 +32,8 @@ let allServices = {
 }
 
 // 用户登录
-let userLogin = function(username, userpwd) {
-  let _sql = `select * from users where username="${username}" and userpwd="${userpwd}";`
+let userLogin = function(username, password) {
+  let _sql = `select * from users where username="${username}" and password="${password}";`
   return allServices.query(_sql)
 }
 

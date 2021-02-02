@@ -2,19 +2,21 @@
 // 给你一个包含 n 个整数的数组 nums，
 // 判断 nums 中是否存在三个元素 a，b，c ，
 // 使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
-let nums = [-1, 0, 1, 2, -1, -4]
+// let nums = [-1, 0, 1, 2, -1, -4]
+let nums = [1, 1, 1]
 const threeSum = function (nums) {
   let res = []
   nums = nums.sort((a, b) => a - b)
   const len = nums.length
+  if(nums[0] > 0) {
+    return res
+  }
   for (let i = 0; i < len - 2; i++) {
     let j = i + 1
     let k = len - 1
-
-    if(nums[i] > 0) {
-      return
-    }
+    
     if(i > 0 && nums[i] === nums[i - 1]) {
+      // console.log(i);
       continue
     }
     while (j < k) {
@@ -41,7 +43,6 @@ const threeSum = function (nums) {
       }
     }
   }
-
   return res
 }
 console.log(threeSum(nums));
