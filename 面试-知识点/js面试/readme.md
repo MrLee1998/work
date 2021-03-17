@@ -25,7 +25,7 @@ prptotype 是函数的原型  __proto__ 是对象原型 有时候也可以理解
 __proto__===constructor.prototype
 
 每个函数都有 prototype 属性， 该属性指向原型。
-原型就是常见该函数的工厂
+原型就是创建该函数的工厂
 每个对象都有 __proto__ 属性， 指向了创建对象的构造函数的原型。
 其实这个属性指向的是[[prototype]], 但是[[prototype]]是内部属性 ，
  我们访问不到， 所有用 __proto__ 来访问

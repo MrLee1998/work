@@ -69,6 +69,7 @@
     考虑安全性的话用session
   3. session会保存在服务器上一段时间， 访问过多时，影响性能，
     考虑性能方面用cookie
+    
   4. cookie大小不超过4k， cookie的保存数量也有限制,最多保存20个cookie
 
 # 讲讲304
@@ -120,7 +121,7 @@ TCP的keep alive的表现：
 
 # csrf 和 xss的网络攻击及防范
   CSRF： 跨站请求伪造， 可以理解为攻击者盗用了用户的身份, 以用户身份发起的恶意请求。
-  防御方式的话：使用验证码，检查https头部的refer，使用token
+  防御方式的话：使用验证码，检查https头部的refer，使用token 利用 Cookie 的 SameSite 属性、验证来源站点和CSRF Token
 
   XSS： 跨站脚本攻击，是说攻击者通过注入恶意的脚本， 在用户浏览网页时进行攻击。
   防御的话为cookie设置httpOnly属性，对用户的输入进行检查，进行特殊字符过滤
@@ -173,3 +174,31 @@ less sass 等
 
 # 如何让事件先冒泡后捕获
   在DOM标准的事件模型中， 实现捕获后冒泡。 但是如果要实现先冒泡后捕获的效果。对于同一个事件，监听捕获和冒泡， 分别对象相应的处理函数， 监听到捕获事件，先暂缓执行， 直到冒泡事件被捕获后再执行捕获事件.
+
+# js的各种位置，比如clientHeight， scrollHeight， offsetHeight， 以及scrollTop， offsetTop， clientTop的区别？
+  clientHeight： 表示可视区域的高度， 不包含border和滚动条
+  offsetHeight：表示可视区域的高度， 包含border和滚动条
+  scrollHeight: 表示所有区域的高度， 包含因滚动隐藏的部分
+  clientTop：表示边框border的厚度， 在未指定的情况下一般为0
+  scrollTop：滚动后被隐藏的高度， 获取对象相对于offsetParent属性指定的父座标（css定位的元素或body元素）距离顶端的高度
+
+# Ajax解决浏览器缓存问题
+  在ajax发送请求前加上 anyAjaxObj.setRequestHeader("if-Modified", "0")
+
+  在ajax发送请求前加上 anyAjaxObj.setRequestHeader("Cache-Control", "no-cache")
+
+  在URL后面加上一个随机数："fresh="+ Math.random()
+
+  在URL后面加上时间差： "nowtime="+ new Date().getTime()
+
+  使用jQuery， 直接可以 $.ajaxSetup({cache: false}) 这样页面的所有ajax都或执行这条语句就是不需要保存缓存记录
+
+# eval是做什么的
+  它的功能是将对应的字符串解析成js并执行， 应该避免使用js， 因为非常消耗性能（2次， 一次解析成js， 一次执行）
+
+# js的语言特性
+  运行在客户端浏览器上
+  不用预编译， 直接解析执行代码
+  是弱类型语言，较为灵活
+  与操作系统无关， 跨平台语言
+  脚本语言， 解释型语言

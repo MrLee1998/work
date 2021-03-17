@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .imgwrapper {
+      width: 1200px;
+      animation: frames 5s ease-out infinite;
+    }
+
+    .img1 {
+      float: left;
+      width: 400px;
+      height: 300px;
+    }
+
+    @keyframes frames {
+
+      0%,
+      25% {
+        margin-left: 0;
+      }
+
+      35%,
+      60% {
+        margin-left: -400px;
+      }
+
+      70%,
+      100% {
+        margin-left: -800px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="imgwrapper">
+      <img class="img1" src="./v.jpg" alt="">
+      <img class="img1" src="./v.jpg" alt="">
+      <img class="img1" src="./v.jpg" alt="">
+      <img class="img1" src="./v.jpg" alt="">
+    </div>
+  </div>
+</body>
+
+</html>

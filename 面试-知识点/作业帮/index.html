@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <style>
+    html, body{
+      margin: 0;
+      padding: 0;
+    }
+    .boxleft, .boxright{
+      position: absolute;
+      top:0;
+			width: 200px;
+			background-color:blue;
+    }
+    .boxleft {
+      left: 0;
+    }
+    .boxright {
+      right: 0;
+    }
+    .boxcenter {
+      background-color: pink;
+      margin: 0 200px;
+    }
+  </style> -->
+
+  <!-- <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .boxleft {
+      float: left;
+      width: 200px;
+      background-color: blue;
+    }
+
+    .boxright {
+      float: right;
+      width: 200px;
+      background-color: blue;
+    }
+
+    .boxcenter {
+      margin: 0 200px;
+      background-color: pink;
+    }
+  </style> -->
+
+  <style>
+    .wrapper {
+      display: flex;
+    }
+    .boxleft, .boxright {
+	    flex: 0 0 200px; 
+	    background-color:blue;
+    }
+    .boxcenter {
+	    flex: 1;
+	    background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="boxleft">left</div>
+	<div class="boxcenter">content</div>
+	<div class="boxright">right</div> -->
+
+
+  <!-- <div class="boxleft">left</div>
+  <div class="boxright">right</div>
+  <div class="boxcenter">content</div> -->
+
+  <div class="wrapper">
+    <div class="boxleft">left</div>
+    <div class="boxcenter">content</div>
+    <div class="boxright">right</div> 
+  </div>
+
+</body>
+
+</html>
