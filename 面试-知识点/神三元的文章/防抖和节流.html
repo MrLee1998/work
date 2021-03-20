@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="btn1">
+    <button>节流</button>
+  </div>
+  <div id="btn2">
+    <button>防抖</button>
+  </div>
+  <script>
+    // 在规定的时间内只促发一次 节流
+    function throttle(fn, delay) {
+      let last = 0;
+      return function(...args) {
+        let context = this;
+        let now = +new Date()
+        if(now - last < delay) {
+          return;
+        }
+        last = now;
+        fn.apply(this, args)
+      }
+      // let prev = Date.now() - delay
+      // // console.log(prev);
+      // return function () {
+      //   let now = Date.now()
+      //   let arg = arguments
+      //   let context = this
+      //   if (now - prev >= delay) {
+      //     fn.apply(context, arg)
+      //     prev = now
+      //   }
+      // }
+    }
+    function show() {
+      console.log('明天你好');
+    }
+    document.getElementById('btn1').addEventListener('click', throttle(show, 2000))
+
+    // 防抖
+    function debounce(fn, delay) {
+      let timer = null;
+      return function (...args) {
+        let context = this
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+          fn.apply(context, args)
+        }, delay)
+      }
+    }
+    document.getElementById('btn2').addEventListener('click', debounce(show, 2000))
+  </script>
+</body>
+
+</html>
